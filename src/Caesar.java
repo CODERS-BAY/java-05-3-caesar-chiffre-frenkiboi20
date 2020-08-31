@@ -20,7 +20,7 @@ public class Caesar {
 
         }
 
-        System.out.println(ausgabe.toUpperCase());
+        System.out.println("Verschlüsselt: " + ausgabe.toUpperCase());
 
     }
 
