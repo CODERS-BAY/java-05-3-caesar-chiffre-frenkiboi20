@@ -5,24 +5,33 @@ public class Caesar {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Text eingeben: ");
-        String text = sc.nextLine();
-        int translation = (int) (Math.random() * 26) + 1;
-        System.out.print("Verschiebung um " + translation + " Stellen");
-        String ausgabe = "";
 
-        for (int i = 0; i < text.length(); i++) {
+        System.out.print("Gib Text ein: ");
+        String s = sc.nextLine();
 
-            char letter = text.charAt(i);
-            int index = letter + translation;
-            char newLetter = (char) index;
-            ausgabe += newLetter;
+        char[] klarText = s.toCharArray();
+        char[] coded = new char[klarText.length];
+
+        int verschiebung = 6; //(int) (Math.random() * 26) + 1;
+
+        for (int i = 0; i < klarText.length; i++) {
+
+            int offset;
+
+            if (klarText[i] >= 'a' && klarText[i] <= 'z' || klarText[i] >= 'A' && klarText[i] <= 'Z') {
+
+                offset = (char) ((klarText[i] - 'a' + verschiebung) % 26 + 'a');
+                coded[i] = (char) offset;
+
+            } else if (klarText[i] == ' ' || klarText[i] == '!') {
+
+                offset = (char) (klarText[i]);
+                coded[i] = (char) offset;
+            }
+
+            System.out.print(coded[i]);
 
         }
-
-        System.out.println("Verschlüsselt: " + ausgabe.toUpperCase());
-
     }
-
 }
 
